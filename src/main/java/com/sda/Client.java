@@ -6,15 +6,20 @@ import java.util.Scanner;
 
 public class Client {
     public static void main(String[] args) throws IOException {
-        Socket socket = new Socket("localhost", 8081);
+        Socket socket = new Socket("192.168.100.157", 8082);
+        Scanner consoleScanner = new Scanner(System.in);
+        String name = consoleScanner.nextLine();
+        String message = consoleScanner.nextLine();
+
         OutputStream outputStream = socket.getOutputStream();
         PrintWriter output = new PrintWriter(outputStream);
 
-        output.println("Hello world");
+        output.println(name);
+        output.println(message);
         output.flush();
 
         Scanner scanner = new Scanner(socket.getInputStream());
-        String next = scanner.next();
+        String next = scanner.nextLine();
         System.out.println(next);
 
         socket.close();
