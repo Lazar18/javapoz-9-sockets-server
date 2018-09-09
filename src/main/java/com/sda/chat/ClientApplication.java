@@ -17,9 +17,13 @@ public class ClientApplication {
         printWriter.println("users");
         printWriter.flush();
 
+
         Scanner scanner = new Scanner(socket.getInputStream());
         String names = scanner.nextLine();
         System.out.println(names);
+
+//        printWriter.println("send Maciej...");
+//        printWriter.flush();
 
         socket.close();
     }

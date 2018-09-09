@@ -1,5 +1,7 @@
 package com.sda.chat.domain.model;
 
+import java.util.Objects;
+
 public class ChatUser {
     private String name;
     private String address;
@@ -7,6 +9,20 @@ public class ChatUser {
     public ChatUser(String name, String address) {
         this.name = name;
         this.address = address;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ChatUser user = (ChatUser) o;
+        return Objects.equals(name, user.name) &&
+                Objects.equals(address, user.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, address);
     }
 
     public String getName() {
